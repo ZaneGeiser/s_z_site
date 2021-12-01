@@ -13,7 +13,8 @@ class Profile(models.Model):
 
     #Extends save method to downsize image
     def save(self):
-        os.remove(self.user.profile.image.path)
+        #method currently leaves the previous image on the server.
+        #need to figure out how to remove.
         super().save()
 
         img = Image.open(self.image.path)
