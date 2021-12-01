@@ -1,3 +1,4 @@
 #Files and Trees to ignore tracking
 *.log
 */.DS_Store
+*.DS_Store
