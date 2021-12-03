@@ -9,8 +9,12 @@ You will then be able to see the web app in browser at http://localhost:8000/
 
 
 Project Status:
+Friday 3 December 2021
+Completed Part 10. Added User authenticated ability to create, update, delete, and Detail View their posts. Next Step:
+https://www.youtube.com/watch?v=acOktTcTVEQ&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=11
+
 Wednesday 1 December 2021
-Completed Part 9 and git commits. Users can now update profile img, name, and email.
+Completed Part 9 and git commits. Users can now update profile img, name, and email. Next Step:
 https://www.youtube.com/watch?v=-s7e_Fy6NRU&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=10
 
 Friday 27 August 2021
