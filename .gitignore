@@ -20,7 +20,7 @@ venv.bak/
 *.pyc
 __pycache__
 db.sqlite3
-#media #I think media should be included for dev atleast. Holds media files for the look of the site.
+#media #I think media should be included for dev atleast. Holds media files for the look of the site.   
 
 # Visual Studio Code # 
 .vscode/* 
