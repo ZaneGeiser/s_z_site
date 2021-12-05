@@ -9,6 +9,10 @@ You will then be able to see the web app in browser at http://localhost:8000/
 
 
 Project Status:
+Sunday 5 December 2021
+Completed Part 11. Added Pagination and Pagination navigation to blog pages and user filterd blog views.
+https://www.youtube.com/watch?v=acOktTcTVEQ&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=12
+
 Friday 3 December 2021
 Completed Part 10. Added User authenticated ability to create, update, delete, and Detail View their posts. Next Step:
 https://www.youtube.com/watch?v=acOktTcTVEQ&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=11
