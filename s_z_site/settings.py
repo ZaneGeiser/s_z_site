@@ -135,3 +135,13 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+PASSWORD_RESET_TIMEOUT_DAYS = 1 #Reset emial timesout in 24hrs.
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER') #Credentials stored locally in .bash_profile
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS') #Credentails stored locally in .bash_profile
+# Investigate this link when ready to deploy application
+# https://docs.djangoproject.com/en/2.1/topics/email/#configuring-email-for-development
