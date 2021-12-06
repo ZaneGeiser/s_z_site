@@ -12,10 +12,10 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
     #Extends save method to downsize image
-    def save(self):
+    def save(self, *args, **kwargs):
         #method currently leaves the previous image on the server.
         #need to figure out how to remove.
-        super().save()
+        super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
 
