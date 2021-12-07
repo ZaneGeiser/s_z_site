@@ -9,6 +9,12 @@ You will then be able to see the web app in browser at http://localhost:8000/
 
 
 Project Status:
+Monday 6 December 2021
+Made it to 1:08:40 on video 13 for deploying a linux server with linode. getting a 403 Forbidden.
+I will need to check the git file from corey to check spelling on all steps to see where I went wrong.
+Will be a very frustrating debug I suspect.
+Also, I need to remove the DJANGO_PRIVATE_KEY in setting from git hub somehow. add to .Bash_profile then clean the existing repo.
+
 Sunday 5 December 2021
 Completed Part 11. Added Pagination and Pagination navigation to blog pages and user filterd blog views.
 https://www.youtube.com/watch?v=acOktTcTVEQ&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=12
