@@ -21,7 +21,6 @@ venv.bak/
 *.pyc
 __pycache__
 db.sqlite3
-/staticfiles
 #media #I think media should be included for dev atleast. Holds media files for the look of the site.   
 
 # Visual Studio Code # 
