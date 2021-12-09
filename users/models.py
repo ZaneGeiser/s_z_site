@@ -12,7 +12,9 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
     #Extends save method to downsize image
-    def save(self, *args, **kwargs):
+    #Commented out because it doesn't work well with AWS
+    #Investigate using an AWS lambda function to resize with AWS.
+    """ def save(self, *args, **kwargs):
         #method currently leaves the previous image on the server.
         #need to figure out how to remove.
         super().save(*args, **kwargs)
@@ -22,4 +24,4 @@ class Profile(models.Model):
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
             img.thumbnail(output_size)
-            img.save(self.image.path)
+            img.save(self.image.path) """
