@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['s-z-site.herokuapp.com',]
 # Application definition
 
 INSTALLED_APPS = [
+    'taggit',
     'crispy_forms',
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig',

@@ -5,6 +5,7 @@ from django.views.generic import (
     UpdateView, DeleteView)
 from django.contrib.auth.models import User
 from .models import Post
+from taggit.models import Tag
 
 
 def home(request):
@@ -35,7 +36,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'tags']
 
     #Overides form_valid method so that we can include current user as author.
     def form_valid(self, form):
@@ -45,7 +46,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'tags']
 
     #Overides form_valid method so that we can include current user as author.
     def form_valid(self, form):
