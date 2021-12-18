@@ -9,7 +9,7 @@
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-danger " type="submit">yes, delete</button>
-                <a class="btn btn-outline-secondary " href="{% url 'post-detail' object.id %}">cancel</a>
+                <a class="btn btn-outline-secondary " href="{% url 'post-detail' object.slug %}">cancel</a>
             </div>
         </form>
     </div>
@@ -21,7 +21,7 @@
                 <small class="text-muted">{{ object.date_posted|date:"d F Y" }}</small>
                 {% if object.author == user %}
                     <div>
-                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">update</a>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.slug %}">update</a>
                     </div>
                 {% endif %} 
             </div>
