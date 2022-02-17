@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+from s_z_site.utils import image_resize
 import os
 
 
@@ -11,17 +12,7 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-    #Extends save method to downsize image
-    #Commented out because it doesn't work well with AWS
-    #Investigate using an AWS lambda function to resize with AWS.
-    """ def save(self, *args, **kwargs):
-        #method currently leaves the previous image on the server.
-        #need to figure out how to remove.
+    #Extends save method to downsize image before AWS upload
+    def save(self, *args, **kwargs):
+        image_resize(self.image, 512, 512)
         super().save(*args, **kwargs)
-
-        img = Image.open(self.image.path)
-
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path) """

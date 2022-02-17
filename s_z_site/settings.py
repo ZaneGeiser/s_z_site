@@ -27,9 +27,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY') #Also set this in Heroku Dashboard
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+DEBUG = os.environ.get('DEBUG_VALUE')
 
-ALLOWED_HOSTS = ['s-z-site.herokuapp.com',]
+ALLOWED_HOSTS = ['s-z-site.herokuapp.com',
+                '127.0.0.1:8000',]
 
 
 # Application definition
