@@ -19,9 +19,15 @@ from django.urls import path, include
 from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.core import urls as wagtail_urls
+# from wagtail.documents import urls as wagtaildocs_urls
 
 
 urlpatterns = [
+    path('cms/', include(wagtailadmin_urls)),
+    # path('documents/', include(wagtaildocs_urls)), #Do not plan on using Wagtail document feature.
+    
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
@@ -39,7 +45,9 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
          name='password_reset_complete'),
     path('profile/', user_views.profile, name='profile'),
-    path('', include('blog.urls')),
+    path('blog/', include(wagtail_urls)),
+    path('', )
+
 ]
 
 

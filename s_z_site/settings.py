@@ -36,8 +36,23 @@ ALLOWED_HOSTS = ['s-z-site.herokuapp.com',
 # Application definition
 
 INSTALLED_APPS = [
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+    'wagtail.contrib.routable_page',
+    'modelcluster',
+
     'taggit',
     'crispy_forms',
+
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig',
     'django.contrib.admin',
@@ -57,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 's_z_site.urls'
@@ -144,7 +160,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_REDIRECT_URL = ''
 LOGIN_URL = 'login'
 
 #Django - Gmail link for password reset
@@ -168,3 +184,11 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DJANGO_SETTINGS_MODULE = os.environ.get('DJANGO_SETTINGS_MODULE')
 
 django_heroku.settings(locals())
+
+#adding Wagtail
+WAGTAIL_SITE_NAME = 'Sarah and Zane'
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.search.backends.database',
+    }
+}
