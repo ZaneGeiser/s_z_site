@@ -1,35 +1,38 @@
 {% extends "blog/base.html"%}
+
 {% load crispy_forms_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
 {% block content %}
     <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}"> 
+        <img class="rounded-circle article-img" src="{{ page.author.profile.image.url }}"> 
         <div class="media-body">
             <div class="article-metadata">
-                <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
-                <small class="text-muted">{{ object.date_posted|date:"d F Y" }}</small>
-                {% if object.author == user %}
+                <a class="mr-2" href="#">{{ page.author }}</a>
+                <small class="text-muted">{{ page.date|date:"d F Y" }}</small>
+                {% if date.author == user %}
                     <div>
-                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.slug %}">update</a>
-                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.slug %}">delete</a>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="#">edit</a>
                     </div>
                 {% endif %} 
             </div>
-        <h2 class="article-title" >{{ object.title }}</h2>
-        <p class="article-content">{{ object.content }}</p>
-        <div>
-            {% for tag in object.tags.all %}
-                <label class="badge badge-info mr-1">{{tag}}</label>
-            {% endfor %}
-        </div>
+        <h2 class="article-title" >{{ page.title }}</h2>
+        <p class="article-content">{{ page.body }}</p>
+        {% for tag in page.tags.all %}
+            <label class="badge badge-info mr-1" href="{{ page.get_parent.url }}?tag={{ tag }}">{{ tag }}</label>
+        {% endfor %}
         </div>
     </article>
+    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+    <!-- comment block was here -->
     <div class="content-secondary">
         <div class="page-header">
-            {% with object.comments.count as total_comments %}
+            {% with page.comments.count as total_comments %}
                 <h2>{{ total_comments }} <small>Comment{{total_comments|pluralize}}</small></h2>
             {% endwith %}
         </div>
-        {% for comment in object.comments.all %}
+        {% for comment in page.comments.all %}
         <article class="media content-section">
             <div class="media container-fluid">
                 <img class="rounded-circle article-img" src="{{ comment.author.profile.image.url }}">
@@ -47,10 +50,11 @@
         {% empty %}
             <h3>Be the first to comment.</h3>
         {% endfor %}  
-    </div> 
+    </div>
+    <!-- {% include 'blog/disqus.html' %} -->
     {% if user.is_authenticated %}
         <div class="content-section">
-            <form method="POST">
+            <form method="POST" id="comment-new">
                 {% csrf_token %}
                 <fieldset class="form-group">
                     <legend class="border-bottom mb-4">Add a new comment</legend>

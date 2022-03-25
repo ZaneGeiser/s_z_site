@@ -4,7 +4,7 @@ from pathlib import Path
 from PIL import Image
 from io import BytesIO
 
-#known issue. Will break if multiple users submit articles simulateously.
+#fallen out of use with upgrade to WagTail
 def unique_slug_generator(instance):
     """ 
     :param model_instance:
