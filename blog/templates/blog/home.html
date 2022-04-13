@@ -1,46 +1,170 @@
 {% extends "blog/base.html"%}
 {% block content %}
-    <!-- Blog Pages For Loop -->
-    {% for post in posts%}
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}"> 
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-              <small class="text-muted mr-2">{{ post.date_posted|date:"d F Y" }}</small>
-              {% for tag in post.tags.all %}
-                <label class="badge badge-info mr-1">{{tag}}</label>
-              {% endfor %}
+<!--Headline banner image-->
+<div class="masthead row h-100 justify-content-center">
+    <div class="col-11 col-lg-10 col-xxl-9 text-left">
+        <h1 class="display-2 font-weight-bold my-5">Hey!</h1>
+        <h3 class="font-weight-light my-5">We're Sarah and Zane.</h3>
+        <h3 class="font-weight-light my-5">We&#39re travelling around Australia in our self-converted Sprinter
+            van, Odi.
+            It&#39s a pretty good time, so
+            we&#39re
+            creating videos and blog posts to document the journey. Come join the fun!</h3>
+        <a class="btn btn-lg btn-happy-red mb-5" target="blank"
+            href="https://www.youtube.com/c/sarahandzane/featured">Follow us
+            on Youtube
+        </a>
+    </div>
+</div>
+<!--Map of or trip-->
+<div class="row justify-content-center my-5">
+    <div class="col-10 col-lg-8 col-xxl-6">
+        <h2 class="mb-4">The Trip:</h2>
+        <img width="100%"
+            src="https://s-z-site-public.s3.ap-southeast-2.amazonaws.com/images/Map-Mw3omvcxYLwJpnNL8Mg.png"
+            alt="Map of places we visited in Australia">
+    </div>
+</div>
+<!--Instagram Grid-->
+<div class="row justify-content-center">
+    <div class="col-10 col-lg-8 col-xxl-6">
+        <h2 class="my-4">Reading Blogs Not Your Thing? Here&#39s Our Insta:</h2>
+        <!--Instagram First Row-->
+        <div class="row row-cols-3 justify-content-center my-4">
+            <div class="col">
+                <a class="card bg-light h-100" href="https://www.instagram.com/p/Ca4GeX2FsoO/" target="blank">
+                    <div class="embed-responsive embed-responsive-1by1">
+                        <img class="card-image-top embed-responsive-item"
+                            src="https://s-z-site-public.s3.ap-southeast-2.amazonaws.com/images/275436390_326615649491112_6369963904924619258_n.jpg"
+                            alt="insta image">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-muted font-weight-light">Dear Sarah and Zane, 370 days after you leave
+                            for
+                            the
+                            trip, you will sell the van...</p>
+                    </div>
+                </a>
             </div>
-            <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
-            {% if post.content|wordcount < 50 %}
-              <p class="article-content">{{ post.content }}</p>
-            {% else %}
-              <p class="article-content">{{ post.content|truncatewords:50 }} <a href="{% url 'post-detail' post.slug  %}">read more</a></p>
-            {% endif %}
-          </div>
-        </article>
-    {% endfor %}
-    <!-- Blog Page Navigation -->
-    {% if is_paginated %}
-
-        {% if page_obj.has_previous %}
-          <a class="btn btn-outline-info mb4" href="?page=1">First</a>
-          <a class="btn btn-outline-info mb4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-        {% endif %}
-
-        {% for num in page_obj.paginator.page_range %}
-          {% if page_obj.number == num %}
-            <a class="btn btn-info mb4" href="?page={{ num }}">{{ num }}</a>
-          {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'+3' %}
-            <a class="btn btn-outline-info mb4" href="?page={{ num }}">{{ num }}</a>
-          {% endif %}
-        {% endfor %}
-
-        {% if page_obj.has_next %}
-          <a class="btn btn-outline-info mb4" href="?page={{ page_obj.next_page_number }}">Next</a>
-          <a class="btn btn-outline-info mb4"href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-        {% endif %}
-
-    {% endif %}
+            <div class="col">
+                <a class="card bg-light h-100" href="https://www.instagram.com/p/CVcac3AF20n/" target="blank">
+                    <div class="embed-responsive embed-responsive-1by1">
+                        <img class="card-image-top embed-responsive-item"
+                            src="https://s-z-site-public.s3.ap-southeast-2.amazonaws.com/images/248426406_3930321287070037_4394930171505470760_n.jpg"
+                            alt="insta image">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-muted font-weight-light">Is there such thing as a bad day on Rottnest
+                            Island?
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a class="card bg-light h-100" href="https://www.instagram.com/p/CUaDlm9FNLx/" target="blank">
+                    <div class="embed-responsive embed-responsive-1by1">
+                        <img class="card-image-top embed-responsive-item"
+                            src="https://s-z-site-public.s3.ap-southeast-2.amazonaws.com/images/243494133_946627746199088_726210102056620794_n.jpg"
+                            alt="insta image">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-muted font-weight-light">&#39I Wanna Remember&#39 by NEEDTOBREATHE. On
+                            repeat.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!--Instagram Second Row-->
+        <div class="row row-cols-3 justify-content-center my-4">
+            <div class="col">
+                <a class="card bg-light h-100" href="https://www.instagram.com/p/CXSrSmXlZx6/" target="blank">
+                    <div class="embed-responsive embed-responsive-1by1">
+                        <img class="card-image-top embed-responsive-item"
+                            src="https://s-z-site-public.s3.ap-southeast-2.amazonaws.com/images/265009605_4656674361083673_24220488320971129_n.jpg"
+                            alt="insta image">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-muted font-weight-light">The van and the road and wide open spaces.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a class="card bg-light h-100" href="https://www.instagram.com/p/CPDIFCkFS43/" target="blank">
+                    <div class="embed-responsive embed-responsive-1by1">
+                        <img class="card-image-top embed-responsive-item"
+                            src="https://s-z-site-public.s3.ap-southeast-2.amazonaws.com/images/187719012_213690753675540_1522366832044726440_n.jpg"
+                            alt="insta image">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-muted font-weight-light">Honestly? There have been so many tears over
+                            the past
+                            10 days.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a class="card bg-light h-100" href="https://www.instagram.com/p/CTovZvfF1mK/" target="blank">
+                    <div class="embed-responsive embed-responsive-1by1">
+                        <img class="card-image-top embed-responsive-item"
+                            src="https://s-z-site-public.s3.ap-southeast-2.amazonaws.com/images/241703315_568052297953814_4330707864160485150_n.jpg"
+                            alt="insta image">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-muted font-weight-light">Yes it really is that red and yes it really is
+                            that
+                            blue and yes we really are in a constant state of amazement.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Email Subscription Section-->
+<div class="row justify-content-center bg-teal">
+    <div class="col-10 col-lg-8 col-xxl-6 text-white">
+        <h2 class="my-4">Where are you?</h2>
+        <h5 class="my-4 lh-lg font-weight-light">If you somehow managed to find our website without first seeing us on
+            YouTube, our hearty
+            congratulations!
+            But, we suggest you head there now to get caught up on our latest adventures. YouTube and Instagram are our
+            main channels of content, and we and don&#39t want this place to be a carbon copy. Rather, we have it for
+            sharing longer thoughts that don&#39t quite fit in a video or a caption. If that sounds like a great time to
+            you, or you just can&#39t get enough of us, pop your email in the box below and you&#39ll be notified of
+            every
+            post, hot off the laptop. Hooray!</h5>
+        <h5 class="my-4 lh-lg font-weight-light">Email notifactions are currently a work in progress. This form is
+            placeholder and We&#39re
+            working on a fix so that it actually works.</h5>
+        <div class="input-group align-items-center">
+            <input type="text" id="email-capture-1" class="form-contorl py-1" aria-label="Subscribers email"
+                aria-describedby="email-capture-1-btn" placeholder="Enter your email address" width="100">
+            <button class="btn btn-happy-red mx-4" type="button" id="email-capture-1-btn">Subscribe</button>
+        </div>
+    </div>
+</div>
+<!--Pre footer site navigation-->
+<div class="row justify-content-center bg-teal-grad py-5">
+    <div class="col-10 col-lg-8 col-xxl-6">
+        <div class="row row-cols-1 row-cols-md-3">
+            <div class="col text-center">
+                <h2 class="my-4">About Us</h2>
+                <h5 class="my-4 font-weight-light">We&#39re married, we live in a van full-time, and we love exploring.
+                    Find our
+                    start-up story <a href="{% url 'blog-about' %}">here</a>.</h5>
+            </div>
+            <div class="col text-center">
+                <h2 class="my-4">Contact Us</h2>
+                <h5 class="my-4 font-weight-light">zanegeiser@gmail.com</h5>
+            </div>
+            <div class="col text-center">
+                <h2 class="my-4">Blog</h2>
+                <h5 class="my-4 font-weight-light">Read up on our latest musings and travel tips <a
+                        href="{% url 'blog-home' %}">here</a>.</h5>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

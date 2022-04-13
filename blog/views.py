@@ -13,15 +13,21 @@ from django.urls import reverse
 from .models import Post
 from .forms import CommentForm
 
-def home(request):
+def site_home(request):
+    return render(request, 'blog/home.html')
+
+def blog_home(request):
     context = {
         'posts': Post.objects.all()
     }
-    return render(request, 'blog/home.html', context)
+    return render(request, 'blog/blog.html', context)
+
+def about(request):
+    return render(request, 'blog/about.html', {'title': 'About'})
 
 class PostListView(ListView):
     model = Post
-    template_name = 'blog/home.html'
+    template_name = 'blog/blog.html'
     context_object_name = 'posts'
     ordering = ['-date_posted'] #loads newest blog first
     paginate_by = 4
@@ -118,6 +124,3 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         else:
             return False 
-
-def about(request):
-    return render(request, 'blog/about.html', {'title': 'About'})
