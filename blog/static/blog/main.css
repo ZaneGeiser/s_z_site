@@ -19,6 +19,13 @@ ul {
   background-image: linear-gradient(#81dccd, #ffffff);
 }
 
+.txt-teal {
+  color: #81dccd;
+}
+
+.txt-teal:hover {
+  color: #01846e;
+}
 .site-header {
   background-color: #ffffff;
 }
@@ -67,6 +74,26 @@ ul {
   color: #ffffff;
 }
 
+.btn-happy-teal {
+  background-color: #81dccd;
+  border-color: #81dccd;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.btn-happy-teal:hover {
+  background-color: #81dccd;
+  border-color: #81dccd;
+  box-shadow: #333;
+  color: #ffffff;
+}
+
+.blockquote-accent {
+  border-left: #81dccd;
+  border-left-width: 4px;
+  border-left-style: solid;
+  padding-left: 6px;
+}
 .card-img-top .embed-responsive {
   object-fit: cover;
 }

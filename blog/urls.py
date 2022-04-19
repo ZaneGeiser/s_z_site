@@ -13,8 +13,8 @@ urlpatterns = [
     path('post/<slug:slug>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('post/<slug:slug>/', PostDetailCommentView.as_view(), name='post-detail'),
     path('about/', views.about, name='blog-about'),
-    path('', views.site_home, name='site-home')
-
+    path('contact/', views.contact, name='blog-contact'),
+    path('', views.site_home, name='site-home'),
 ]
  
 # Default PostListView Search Pattern.

@@ -1,5 +1,60 @@
 {% extends "blog/base.html"%}
 {% block content %}
-    <h1>Blog About: Coming soon.</h1>
+<div class="row justify-content-center">
+    <div class="col-10 col-lg-8 col-xl-7 text-center">
+        <hr />
+        <h1 class="my-5">About Us</h1>
+        <hr />
+        <h5 class="font-weight-light my-5 text-left">Sarah is from Canberra and Zane is from Hickory. If you don’t know
+            where
+            those places are, rest assured you’re part of a pretty extensive group. Long story short: they’re 10 000
+            miles apart. We met while Sarah was studying abroad for a semester at Zane’s uni, UNC Chapel Hill.
+            Fast-forward through 3 years of long-distance dating, a lengthy visa process and a beautiful wedding (in our
+            humble opinions), we found ourselves living in Sydney with dreams of traveling the world at the end of 2020.
+            But, as it turned out, 2020 was not the year for airports. Plan B saw us buy a van from a tourism company
+            who wasn’t seeing huge amounts of tourists that year, spending six months converting it into a tiny home
+            while working full time, and setting off on a trip around Australia in early 2021.</h5>
+        <img class="img-fluid"
+            src="https://s-z-site-public.s3.ap-southeast-2.amazonaws.com/images/212393035_215605080424848_2977390273061177471_n.jpg"
+            alt="Us Standing at Wineglass Bay">
+        <h5 class="font-weight-light my-5 text-left">Sarah is fun, energetic, and a magnetic character, especially on a
+            stage (ask
+            her to recite any line from
+            The Parent Trap – she knows the whole script by heart). Zane is relaxed, industrious, and often excited by a
+            good tomato (seriously – we have a 15 tomato restriction per shop).</h5>
+        <h5 class="font-weight-light my-5 text-left">Together, we’ll be documenting anything that we find exciting. To
+            be honest,
+            for Sarah, this is most things.
+            Our goal is to capture the joy we have in exploring and to tell a good story along the way.</h5>
+        <h5 class="font-weight-light my-5 text-left">What’s next for us after this trip? We have no idea. Hopefully
+            we’ll figure
+            it out at some point over the
+            next 12 months, but until then, more cheese please.</h5>
+        <hr />
+        <h2 class="mb-4">Keen to meet up?</h2>
+        <a href="{% url 'blog-contact' %}"><button class="btn btn-happy-teal center my-4">Get in touch!</button></a>
+        <hr />
+        <div class="row row-cols-3 text-left my-5">
+            <div class="col">
+                <blockquote class="blockquote blockquote-accent">
+                    <p>The way to get started is to quit talking and begin doing.</p>
+                    <cite>Walt Disney</cite>
+                </blockquote>
+            </div>
+            <div class="col">
+                <blockquote class="blockquote blockquote-accent">
+                    <p>You can never get a cup of tea large enough or a book long enough to suit me.</p>
+                    <cite>C.S. Lewis</cite>
+                </blockquote>
+            </div>
+            <div class="col">
+                <blockquote class="blockquote blockquote-accent">
+                    <p>Little by little, one travels far.</p>
+                    <cite>J.R.R. Tolkien</cite>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
 
