@@ -1,7 +1,11 @@
 {% extends "blog/base.html"%}
 {% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-9 col-xl-8">
     <!-- Blog Pages For Loop -->
     {% for post in posts%}
+    <div class="row">
+      <div class="col-12">
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}"> 
           <div class="media-body">
@@ -16,10 +20,14 @@
               <div class="article-body">{{ post.body_summary | safe }}<div>
           </div>
         </article>
+        <hr />
+      </div>
+    </div>
     {% endfor %}
     <!-- Blog Page Navigation -->
     {% if is_paginated %}
-
+    <div class="row justify-content-center">
+      <div class="col-auto align-self-center">
         {% if page_obj.has_previous %}
           <a class="btn btn-outline-info mb4" href="?page=1">First</a>
           <a class="btn btn-outline-info mb4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
@@ -37,6 +45,9 @@
           <a class="btn btn-outline-info mb4" href="?page={{ page_obj.next_page_number }}">Next</a>
           <a class="btn btn-outline-info mb4"href="?page={{ page_obj.paginator.num_pages }}">Last</a>
         {% endif %}
-
+      </div>
+    </div>
     {% endif %}
+  </div>
+</div>
 {% endblock content %}

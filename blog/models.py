@@ -26,7 +26,7 @@ class Post(models.Model):
         return markdown.markdown(text=self.body, extensions=['extra'])
 
     def body_summary(self):
-        return markdown.markdown(text=self.body[:300] + "...", extensions=['extra'])
+        return markdown.markdown(text=self.body[:300] + f"...[read more]({self.get_absolute_url()})", extensions=['extra'])
 
     def __str__(self):
         return self.slug
