@@ -115,8 +115,9 @@ a.article-title:hover {
   text-decoration: none;
 }
 
-.article-content {
-  white-space: pre-line;
+.article-body {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .article-img {

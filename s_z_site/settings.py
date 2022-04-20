@@ -40,6 +40,7 @@ ALLOWED_HOSTS = ['s-z-site.herokuapp.com',
 INSTALLED_APPS = [
     'taggit',
     'crispy_forms',
+    'markdownx',
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig',
     'django_extensions',
@@ -169,5 +170,9 @@ AWS_S3_FILE_OVERWRITE = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 DJANGO_SETTINGS_MODULE = os.environ.get('DJANGO_SETTINGS_MODULE')
+
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.extra'
+]
 
 django_heroku.settings(locals())

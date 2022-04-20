@@ -15,7 +15,7 @@
                 {% endif %} 
             </div>
         <h2 class="article-title" >{{ object.title }}</h2>
-        <p class="article-content">{{ object.content }}</p>
+        <div class="article-body">{{ object.formatted_markdown_body | safe }}</div>
         <div>
             {% for tag in object.tags.all %}
                 <label class="badge badge-info mr-1">{{tag}}</label>

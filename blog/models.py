@@ -4,16 +4,29 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from taggit.managers import TaggableManager
 from django.db.models.signals import pre_save
-from s_z_site.utils import unique_slug_generator 
+from s_z_site.utils import unique_slug_generator
+from markdownx.models import MarkdownxField
+import markdown
 
 # Post Class for Blog Post on Site. Uses Django Database.
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    body = MarkdownxField(
+        help_text="""This Field Supports basic Markdown.
+        See <a href='https://www.markdownguide.org/cheat-sheet/' target='blank'>this markdown cheat sheet</a> for help. \n
+        This field supports headings, bold, italic, blockquote, ordered list, unordered list, code, fenced code block, 
+        horizontal rule, link, image, table, abbreviations, attribute Lists, footnotes, and definition list.
+        Image drag and drop is also supported.""")
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = TaggableManager()
     slug = models.SlugField(max_length=100, unique=True)
+
+    def formatted_markdown_body(self):
+        return markdown.markdown(text=self.body, extensions=['extra'])
+
+    def body_summary(self):
+        return markdown.markdown(text=self.body[:300] + "...", extensions=['extra'])
 
     def __str__(self):
         return self.slug

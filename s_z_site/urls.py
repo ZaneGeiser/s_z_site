@@ -39,6 +39,7 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
          name='password_reset_complete'),
     path('profile/', user_views.profile, name='profile'),
+    path('markdownx/', include('markdownx.urls')),
     path('', include('blog.urls')),
 ]
 

@@ -1,7 +1,12 @@
 from django.contrib import admin
+from markdownx.admin import MarkdownxModelAdmin
 from .models import Post, Comment
 
-admin.site.register(Post)
+@admin.register(Post)
+class PostAdmin(MarkdownxModelAdmin):
+    list_display = ('title', 'date_posted', 'author')
+    list_filter = ('date_posted', 'tags')
+    search_fields = ('title', 'body')
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
