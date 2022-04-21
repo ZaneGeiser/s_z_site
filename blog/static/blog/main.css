@@ -83,7 +83,9 @@ ul {
 
 .btn-happy-teal:hover {
   background-color: #81dccd;
-  border-color: #81dccd;
+  border-color: #345450;
+  border-width: 1px;
+  border-style: solid;
   box-shadow: #333;
   color: #ffffff;
 }
@@ -124,6 +126,12 @@ a.article-title:hover {
   height: 65px;
   width: 65px;
   margin-right: 16px;
+}
+
+.comment-profile-img {
+  height: 45px;
+  width: 45px;
+  margin-right: 25px;
 }
 
 .article-metadata {

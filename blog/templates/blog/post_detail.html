@@ -10,7 +10,7 @@
                 <div class="media-body">
                     <div class="row article-metadata">
                         <div class="col-auto justify-content-start">
-                            <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
+                            <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author.get_full_name }}</a>
                             <small class="text-muted">{{ object.date_posted|date:"d F Y" }}</small>
                         </div>
                         {% if object.author == user %}
@@ -35,22 +35,23 @@
                 <div class="content-secondary">
                     <div class="page-header">
                         {% with object.comments.count as total_comments %}
-                        <h2>{{ total_comments }} <small>Comment{{total_comments|pluralize}}</small></h2>
+                        <h3>{{ total_comments }} thought{{total_comments|pluralize}} on "{{ object.title }}"</h3>
                         {% endwith %}
                     </div>
                     {% for comment in object.comments.all %}
                     <article class="media content-section">
                         <div class="media container-fluid">
-                            <img class="rounded-circle article-img" src="{{ comment.author.profile.image.url }}">
+                            <img class="rounded-circle comment-profile-img d-none d-md-block" src="{{ comment.author.profile.image.url }}">
                             <div class="media-body">
-                                <h4 class="media-heading user_name">{{ comment.author }}</h4>
+                                <div class="row">
+                                    <h5 class="media-heading user_name mr-auto">{{ comment.author }}</h5>
+                                    <div class="float-right">
+                                        <p><small class="mb-2">{{ comment.date_created|date:"d M y | H:i" }}</small>
+                                    </div>
+                                </div>
                                 {{ comment.body }}
-                                <p><small><a href="#">Like</a> - <a href="#">Share</a></small></p>
                             </div>
-                            <div class="pull-right">
-                                <p><small class="mb-2">{{ comment.date_created|date:"P" }}</small></p>
-                                <small class="mb-2">{{ comment.date_created|date:"j.n.y" }}</small>
-                            </div>
+                            
                         </div>
                     </article>
                     {% empty %}
@@ -71,7 +72,7 @@
                     </form>
                 </div>
                 {% else %}
-                <a class="nav-item nav-link" href="{% url 'login' %}">Login to Comment</a>
+                <a class="btn btn-happy-teal" href="{% url 'login' %}">Login to Comment</a>
                 {% endif %}
             </div>
         </div>
