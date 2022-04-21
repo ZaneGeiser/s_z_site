@@ -12,11 +12,11 @@ def send_newpost_email_notification(sender, instance, created, **kwargs):
             {'post_body_summary': f"{instance.body[:500]}...",
             'post_title': instance.title,
             'post_url': instance.get_absolute_url(),
-            'site_url': 'https://www.sarahandzane.com/'})
+            'site_url': 'http://www.sarahandzane.com'})
         msg_html = render_to_string('blog/new_post_email.html',
             {'post_body_summary': f"{instance.body[:500]}...",
             'post_title': instance.title,
             'post_url': instance.get_absolute_url(),
-            'site_url': 'https://www.sarahandzane.com/'})
+            'site_url': 'http://www.sarahandzane.com'})
         for user in User.objects.all():
             user.email_user(subject, message=msg_plain, html_message=msg_html)
