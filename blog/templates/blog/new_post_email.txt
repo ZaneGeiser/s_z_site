@@ -1,0 +1,6 @@
+![S&Z Logo](https://s-z-site-public.s3.ap-southeast-2.amazonaws.com/images/Logo_with_Name.png)
+##{{ post_title }}
+{{ post_body_sumary }}
+[Continue Reading]({{ post_url }})
+
+{{site_url}}

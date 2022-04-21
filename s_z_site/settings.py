@@ -159,6 +159,7 @@ PASSWORD_RESET_TIMEOUT_DAYS = 1 #Reset emial timesout in 24hrs.
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER') #Credentials stored locally in .bash_profile
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS') #Credentails stored locally in .bash_profile
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_USER')
 # Investigate this link when ready to deploy application
 # https://docs.djangoproject.com/en/2.1/topics/email/#configuring-email-for-development
 

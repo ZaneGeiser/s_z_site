@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from PIL import Image
 from s_z_site.utils import image_resize
-import os
+
 
 
 class Profile(models.Model):
