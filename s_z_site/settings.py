@@ -32,7 +32,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG_VALUE')  == 'True'
 
 ALLOWED_HOSTS = ['s-z-site.herokuapp.com',
-                '127.0.0.1:8000',]
+                '127.0.0.1:8000',
+                'www.sarahandzane.com']
 
 
 # Application definition
