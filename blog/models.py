@@ -25,8 +25,8 @@ class Post(models.Model):
     def formatted_markdown_body(self):
         return markdown.markdown(text=self.body, extensions=['extra'])
 
-    def body_summary(self, length=300):
-        return markdown.markdown(text=self.body[:length], extensions=['extra'])
+    def body_summary(self, length=500):
+        return markdown.markdown(text=self.body[:length].rstrip() + f'...<a href="{self.get_absolute_url()}">continue reading</a>', extensions=['extra'])
 
     def __str__(self):
         return self.slug
