@@ -13,8 +13,10 @@ from django.urls import reverse
 from .models import Post
 from .forms import CommentForm
 
+
 def site_home(request):
     return render(request, 'blog/home.html')
+
 
 def blog_home(request):
     context = {
@@ -22,31 +24,37 @@ def blog_home(request):
     }
     return render(request, 'blog/blog.html', context)
 
+
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
 
+
 def contact(request):
     return render(request, 'blog/contact.html', {'title': 'Contact'})
+
 
 class PostListView(ListView):
     model = Post
     template_name = 'blog/blog.html'
     context_object_name = 'posts'
-    ordering = ['-date_posted'] #loads newest blog first
+    ordering = ['-date_posted']  # loads newest blog first
     paginate_by = 4
+
 
 class UserPostListView(ListView):
     model = Post
     template_name = 'blog/user_posts.html'
     context_object_name = 'posts'
-    ordering = ['-date_posted'] #loads newest blog first 
+    ordering = ['-date_posted']  # loads newest blog first
     paginate_by = 4
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-date_posted')
 
-#Parent class to PostDetailCommentView
+# Parent class to PostDetailCommentView
+
+
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
@@ -57,7 +65,9 @@ class PostDetailView(DetailView):
         context['form'] = CommentForm()
         return context
 
-#Parent class to PostDetailCommentView
+# Parent class to PostDetailCommentView
+
+
 class PostCommentFormView(SingleObjectMixin, FormView):
     template_name = 'blog/post_detail.html'
     form_class = CommentForm
@@ -72,7 +82,7 @@ class PostCommentFormView(SingleObjectMixin, FormView):
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
-    
+
     def get_success_url(self):
         return reverse('post-detail', kwargs={'slug': self.object.slug})
 
@@ -82,6 +92,7 @@ class PostCommentFormView(SingleObjectMixin, FormView):
         form.save()
         return super().form_valid(form)
 
+
 class PostDetailCommentView(View):
     def get(self, request, *args, **kwargs):
         view = PostDetailView.as_view()
@@ -90,40 +101,3 @@ class PostDetailCommentView(View):
     def post(self, request, *args, **kwargs):
         view = PostCommentFormView.as_view()
         return view(request, *args, **kwargs)
-
-class PostCreateView(LoginRequiredMixin, CreateView):
-    model = Post
-    fields = ['title', 'content', 'tags']
-
-    #Overides form_valid method so that we can include current user as author.
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-
-class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Post
-    fields = ['title', 'content', 'tags']
-
-    #Overides form_valid method so that we can include current user as author.
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-    def test_func(self):
-        post = self.get_object()
-        if self.request.user == post.author:
-            return True
-        else:
-            return False
-
-class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Post
-    success_url = '/' #home page
-
-    def test_func(self):
-        post = self.get_object()
-        if self.request.user == post.author:
-            return True
-        else:
-            return False 

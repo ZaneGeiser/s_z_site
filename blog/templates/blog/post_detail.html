@@ -2,19 +2,20 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-10 col-lg-8 col-xl-7">
+    <div class="col-12 col-lg-9 col-xl-8">
         <div class="row">
             <div class="col">
             <article class="media content-section">
-                <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+                <img class="rounded-circle article-img d-none d-md-block" src="{{ post.author.profile.image.url }}">
                 <div class="media-body">
-                    <div class="article-metadata">
-                        <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
-                        <small class="text-muted">{{ object.date_posted|date:"d F Y" }}</small>
+                    <div class="row article-metadata">
+                        <div class="col-auto justify-content-start">
+                            <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
+                            <small class="text-muted">{{ object.date_posted|date:"d F Y" }}</small>
+                        </div>
                         {% if object.author == user %}
-                        <div>
-                            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.slug %}">update</a>
-                            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.slug %}">delete</a>
+                        <div class="col-auto justify-content-end">
+                            <a href="{% url 'admin:blog_post_change' post.id %}"><button class="btn btn-secondary btn-sm my-1">edit post</button></a>
                         </div>
                         {% endif %}
                     </div>
