@@ -37,7 +37,7 @@ ALLOWED_HOSTS = ['s-z-site.herokuapp.com',
                 'sarahandzane.com']
 
 #Security settings for deployment
-SECURE_PROXY_SSL_HEADER = None if os.environ.get('SECURE_PROXY_SSL_HEADER') == 'None' else os.environ.get('SECURE_PROXY_SSL_HEADER')
+SECURE_PROXY_SSL_HEADER = None if os.environ.get('SECURE_PROXY_SSL_HEADER') == 'None' else ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT')  == 'True'
 CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE')  == 'True'
 SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE')  == 'True'
