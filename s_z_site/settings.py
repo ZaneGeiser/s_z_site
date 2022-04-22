@@ -33,8 +33,14 @@ DEBUG = os.environ.get('DEBUG_VALUE')  == 'True'
 
 ALLOWED_HOSTS = ['s-z-site.herokuapp.com',
                 '127.0.0.1:8000',
-                'www.sarahandzane.com']
+                'www.sarahandzane.com',
+                'sarahandzane.com']
 
+#Security settings for deployment
+SECURE_PROXY_SSL_HEADER = None if os.environ.get('SECURE_PROXY_SSL_HEADER') == 'None' else os.environ.get('SECURE_PROXY_SSL_HEADER')
+SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT')  == 'True'
+CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE')  == 'True'
+SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE')  == 'True'
 
 # Application definition
 
